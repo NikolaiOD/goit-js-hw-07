@@ -7,12 +7,12 @@ import { galleryItems } from './gallery-items.js';
 // 4.Відкриття модального вікна по кліку на елементі галереї. Для цього ознайомся з документацією і прикладами.
 // 5.Заміна значення атрибута src елемента <img> в модальному вікні перед відкриттям. Використовуй готову розмітку модального вікна із зображенням з прикладів бібліотеки basicLightbox.
 
-const galleryContainer = document.querySelector('.gallery');
+const galleryContainer = document.querySelector(".gallery");
 const itemsMarkup = createGalleryItemsMarkup(galleryItems);
 
-galleryContainer.insertAdjacentHTML('beforeend', itemsMarkup);
+galleryContainer.insertAdjacentHTML("beforeend", itemsMarkup);
 
-galleryContainer.addEventListener('click', onGalleryItemClick);
+galleryContainer.addEventListener("click", onGalleryItemClick);
 
 function createGalleryItemsMarkup(galleryItems) {
     return galleryItems
@@ -29,13 +29,13 @@ function createGalleryItemsMarkup(galleryItems) {
   </a>
 </div>`;
     })
-    .join('');
+    .join("");
 }
 
 function onGalleryItemClick(event) {
     event.preventDefault();
     
-    if (event.target.nodeName !== 'IMG') {
+    if (event.target.nodeName !== "IMG") {
         return;
     }
     const galleryLink = event.target.dataset.source;
@@ -43,7 +43,7 @@ function onGalleryItemClick(event) {
     const instance = basicLightbox.create(`<img src="${galleryLink}">`);
     instance.show();
 
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') instance.close();
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") instance.close();
     });
 }
